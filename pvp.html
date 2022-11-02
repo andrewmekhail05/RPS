@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Vs. Player</title>
+    <link rel="icon" type="image/x-icon" href="rpz_favicon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        header{
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+            text-shadow: white 1px 1px;
+        }
+        #home{
+            width:100px;
+            height:50px;
+            background-color:green;
+            float:left;
+            font-family: 'Fredoka One', cursive;
+        }
+        body{
+            background-image: url("Sal.jpg");
+            height:700px;
+        }
+        .player1{
+            background-image: linear-gradient(to right, red, black);
+            text-align:center;
+            width:500px;
+            height:200px;
+            margin:auto;
+        }
+        .player2{
+            background-image: linear-gradient(to right, black, blue);
+            background-color: white;
+            text-align:center;
+            width:500px;
+            height:200px;
+            margin:auto;
+        }
+        #fp, #sp{
+            margin-top:40px;
+            width:300px;
+            height:100px;
+            font-size:50px;
+            text-align:center;
+            font-family: 'Fredoka One', cursive;
+            border: 5px;
+        }
+        .check{
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+        }
+        #btn{
+            width:200px;
+            height:50px;
+            font-family: 'Fredoka One', cursive;
+        }
+        #feedback{
+            font-size:50px;
+            font-family: 'Fredoka One', cursive;
+        }
+        #newGame{
+            width:100px;
+            height:50px;
+            background-color:rgb(229, 255, 0);
+            float:right;
+            font-family: 'Fredoka One', cursive;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button id="home" onclick="location.href = 'index.html';">HOME</button>
+        <button id="newGame" onclick="window.location.reload();">New Game</button>
+        <h1>Player Vs. Player</h1>
+        <p>Rules: The game is very simple. You can only put input 3 values: "R", "P", or "S", and they must be capital. The game is better if a third player is present in order to input the values for you. If there is an issue, you will be alerted and you may press the "New Game" button.</p>
+        <hr>
+    </header>
+
+<!-- Player 1 Buttons -->
+    <div class="player1">
+        <input type="text" id="fp">
+    </div>
+<!-- Player 2 -->
+    <div class="player2">
+        <input type="text" id="sp">
+    </div>
+<!-- Use the button to check -->
+    <div class="check">
+        <button id="btn">Check</button>
+        <div id="feedback"></div>
+    </div>
+
+    <script>
+        let fp=document.getElementById("fp").value;
+        let sp=document.getElementById("sp").value;
+        let r="R"
+        let s="S"
+        let p="P"
+        var check = document.getElementById("btn");
+        check.addEventListener('click', checkGame);
+        check.addEventListener('click', deBug)
+
+        function deBug(){
+            fp=document.getElementById("fp").value;
+            sp=document.getElementById("sp").value;
+            console.log(fp)
+            console.log(sp)
+        }
+
+        function checkGame(){
+            fp=document.getElementById("fp").value;
+            sp=document.getElementById("sp").value;
+            // r Possibilities
+            if(fp==r && sp==s){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(fp==r && sp==r){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(fp==r && sp==p){
+                document.getElementById('feedback').innerHTML=("Player 2 Wins!")
+            }
+            //Second Player Rock
+            else if(sp==r && fp==s){
+                document.getElementById('feedback').innerHTML=("Player 2 Wins!")
+            }
+            else if(sp==r && fp==r){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(sp==r && fp==p){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            //Scissors Possibilities
+            else if(fp==s && sp==p){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(fp==s && sp==r){
+                document.getElementById('feedback').innerHTML=("Player 2 Wins!")
+            }
+            else if(fp==s && sp==s){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            //Second Player Scissors
+            else if(sp==s && fp==r){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(sp==s && fp==p){
+                document.getElementById('feedback').innerHTML=("Player 2 Wins!")
+            }
+            else if(sp==s && fp==s){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            //Paper Possibilities
+            else if(fp==p && sp==r){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(fp==p && sp==p){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(fp==p && sp==s){
+                document.getElementById('feedback').innerHTML=("Player 2 Wins!")
+            }
+            //Second Player Paper
+            else if(sp==p && fp==r){
+                document.getElementById('feedback').innerHTML=("Player 2 Wins!")
+            }
+            else if(sp==p && fp==p){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(sp==p && fp==s){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else{
+                document.getElementById('feedback').innerHTML=("Try Again")
+            }
+        }
+    </script>
+</body>
+</html>

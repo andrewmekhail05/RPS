@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Vs. Computer</title>
+    <link rel="icon" type="image/x-icon" href="rpz_favicon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        header{
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+            text-shadow: red 1px 1px;
+            color:white;
+        }
+        #home{
+            width:100px;
+            height:50px;
+            background-color:green;
+            float:left;
+            font-family: 'Fredoka One', cursive;
+        }
+        body{
+            background-image: url("joe.jpg");
+            background-repeat: no-repeat;
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: cover;
+            height:700px;
+        }
+        .player1{
+            background-image: linear-gradient(to right, red, black);
+            text-align:center;
+            width:500px;
+            height:200px;
+            margin:auto;
+        }
+        .player2{
+            background-image: linear-gradient(to right, black, blue);
+            text-align:center;
+            width:500px;
+            height:200px;
+            margin:auto;
+            font-size:50px;
+            color:azure;
+            text-shadow: white 1px 1px;
+        }
+        #fp{
+            margin-top:40px;
+            width:300px;
+            height:100px;
+            font-size:50px;
+            text-align:center;
+            font-family: 'Fredoka One', cursive;
+            border: 5px;
+        }
+        #sp{
+            margin-left:100px;
+            width:300px;
+            height:100px;
+            font-size:30px;
+            text-align:center;
+            font-family: 'Fredoka One', cursive;
+            border: 5px;
+        }
+        .check{
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+        }
+        #btn{
+            width:200px;
+            height:50px;
+            font-family: 'Fredoka One', cursive;
+        }
+        #feedback{
+            font-size:50px;
+            text-shadow: white 1px 1px;
+            font-family: 'Fredoka One', cursive;
+        }
+        #newGame{
+            width:100px;
+            height:50px;
+            background-color:rgb(229, 255, 0);
+            float:right;
+            font-family: 'Fredoka One', cursive;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button id="home" onclick="location.href = 'index.html';">HOME</button>
+        <button id="newGame" onclick="window.location.reload();">New Game</button>
+        <h1>Player Vs. Copmuter</h1>
+        <p>Rules: The game is very simple. The computer has already randomly chosen either "R", "P", or "S". Your job is to chose one of those options. In order for it to work, you must type in one of those options exactly like that. After, you must press new game. If there is an issue, you will be notified and you may press the new game button</p>
+        <hr>
+    </header>
+
+<!-- Player 1 Buttons -->
+    <div class="player1">
+        <input type="text" id="fp">
+    </div>
+
+    <div class="player2">
+        <div id="sp"></div>
+    </div>
+<!-- Use the button to check -->
+    <div class="check">
+        <button id="btn">Check</button>
+        <div id="feedback"></div>
+    </div>
+
+    <script>
+        let fp=document.getElementById("fp").value;
+        
+        let r="R"
+        let s="S"
+        let p="P"
+
+        var list = [r, s, p]
+
+        var sp = list[Math.round(Math.random() * 2)];
+        console.log(sp)
+        
+
+        var check = document.getElementById("btn");
+        check.addEventListener('click', checkGame);
+        check.addEventListener('click', deBug)
+
+        function deBug(){
+            fp=document.getElementById("fp").value;
+            sp=document.getElementById("sp").value;
+            console.log(fp);
+        }
+
+        function checkGame(){
+            fp=document.getElementById("fp").value;
+            sp=sp
+            // r Possibilities
+            if(fp==r && sp==s){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(fp==r && sp==r){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(fp==r && sp==p){
+                document.getElementById('feedback').innerHTML=("The Computer Wins!")
+            }
+            //Second Player Rock
+            else if(sp==r && fp==s){
+                document.getElementById('feedback').innerHTML=("The Computer Wins!")
+            }
+            else if(sp==r && fp==r){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(sp==r && fp==p){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            //Scissors Possibilities
+            else if(fp==s && sp==p){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(fp==s && sp==r){
+                document.getElementById('feedback').innerHTML=("The Computer Wins!")
+            }
+            else if(fp==s && sp==s){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            //Second Player Scissors
+            else if(sp==s && fp==r){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(sp==s && fp==p){
+                document.getElementById('feedback').innerHTML=("The Computer Wins!")
+            }
+            else if(sp==s && fp==s){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            //Paper Possibilities
+            else if(fp==p && sp==r){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else if(fp==p && sp==p){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(fp==p && sp==s){
+                document.getElementById('feedback').innerHTML=("The Computer Wins!")
+            }
+            //Second Player Paper
+            else if(sp==p && fp==r){
+                document.getElementById('feedback').innerHTML=("The Computer Wins!")
+            }
+            else if(sp==p && fp==p){
+                document.getElementById('feedback').innerHTML=("It's a Tie!")
+            }
+            else if(sp==p && fp==s){
+                document.getElementById('feedback').innerHTML=("Player 1 Wins!")
+            }
+            else{
+                document.getElementById('feedback').innerHTML=("Try Again")
+            }
+
+            document.getElementById('sp').innerHTML=("The computer Chose: " + sp);
+        }
+    </script>
+</body>
+</html>

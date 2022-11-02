@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors, GO!</title>
+    <link rel="icon" type="image/x-icon" href="rpz_favicon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        body{
+            padding:0%;
+            margin:0%;
+            background-image: linear-gradient(to right, rgb(151, 151, 151), rgb(39, 39, 39));
+        }
+        header{
+            text-align: center;
+            margin-top: 50px;
+            font-size:50px;
+            text-shadow: white 1px 1px;
+            font-family: 'Fredoka One', cursive;
+        }
+        #a, #b{
+            text-align: center;
+        }
+        #pvp{
+            text-align:center;
+            width:500px;
+            height:150px;
+            font-size:50px;
+            background-color:rgb(20, 129, 201);
+            font-family: 'Fredoka One', cursive;
+            border-width: 5px;
+            margin-bottom:50px;
+        }
+        #pvc{
+            text-align:center;
+            width:500px;
+            height:150px;
+            font-size:50px;
+            background-color:rgb(20, 129, 201);
+            border-width: 5px;
+            font-family: 'Fredoka One', cursive;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+    <header>
+        <h1>Rock, Paper, Scissors, GO!</h1>
+    </header>
+<!-- Player Vs. Player option -->
+    <div id="a">
+        <button id="pvp" onclick="location.href = 'pvp.html';">Player Vs. Player</button>
+    </div>
+<!-- Player Vs. Computer option -->
+    <div id="b">
+        <button id="pvc" onclick="location.href = 'pvc.html';">Player Vs. Computer</button>
+    </div>
+</body>
+</html>
